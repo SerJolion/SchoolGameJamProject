@@ -1,0 +1,22 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Game Jam Project"
+run/main_scene="res://main_scene.tscn"
+config/features=PackedStringArray("4.0", "Forward Plus")
+config/icon="res://icon.svg"
+
+[layer_names]
+
+2d_physics/layer_1="FloorAndWall"
+2d_physics/layer_2="Characters"
+2d_physics/layer_3="HitBoxes"

@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3qgmepwvndll"]
+
+[ext_resource type="SpriteFrames" uid="uid://byi1mowsifjqr" path="res://Animations/SceletonAnimations.tres" id="1_7abim"]
+[ext_resource type="Script" path="res://Scripts/SceletonLogic.gd" id="1_aeir5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ovm2w"]
+size = Vector2(29, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rbhu7"]
+size = Vector2(24, 34)
+
+[node name="Sceleton" type="CharacterBody2D"]
+collision_layer = 2
+floor_block_on_wall = false
+floor_max_angle = 0.959931
+floor_snap_length = 3.0
+script = ExtResource("1_aeir5")
+
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(16, 17)
+scale = Vector2(2.375, 2.375)
+sprite_frames = ExtResource("1_7abim")
+animation = &"Death"
+autoplay = "Idle"
+
+[node name="Colider" type="CollisionShape2D" parent="."]
+position = Vector2(14.5, 17)
+shape = SubResource("RectangleShape2D_ovm2w")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(14, 17)
+shape = SubResource("RectangleShape2D_rbhu7")
+debug_color = Color(0.972549, 0, 0, 0.419608)
+
+[node name="Label" type="Label" parent="."]
+offset_top = -23.0
+offset_right = 40.0
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
